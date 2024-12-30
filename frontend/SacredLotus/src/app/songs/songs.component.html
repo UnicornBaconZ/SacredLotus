@@ -1,0 +1,37 @@
+<h1>Songs</h1>
+<div class="media-list" #mediaList>
+    <div class="media-card" *ngFor="let song of songs">
+      <img [src]="song.songImage" [alt]="song.title" class="media-image" />
+      <div class="media-info">
+        <div class="title">
+          <h5>{{ song.title }}</h5>
+          <a [href]="song.songFile" [download]="song.title" class="download-button" title="Download">
+            <mat-icon>download</mat-icon>
+          </a>
+        </div>
+        <p class="artist">{{ song.artist }}</p>
+      </div>
+      <div class="audio-group">
+        <audio
+          #audio
+          [src]="song.songFile"
+          (timeupdate)="updateProgressBar(audio, progressBar)"
+        ></audio>
+        <button class="audio-control" (click)="toggleAudio(audio, $event)">
+            <mat-icon>{{ currentPlayingAudio === audio ? 'pause' : 'play_arrow' }}</mat-icon>
+          </button>
+          
+      </div>
+      <input
+        #progressBar
+        type="range"
+        class="progress-bar"
+        value="0"
+        min="0"
+        max="100"
+        step="0.1"
+        (input)="seekAudio(audio, $event)"
+      />
+    </div>
+  </div>
+  

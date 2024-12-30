@@ -1,0 +1,146 @@
+.title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.media-card {
+    background-color: white;
+    border: 1px solid gba(211,211,211,0.75);
+    border-radius: 25px;
+    width: 250px;
+    height: 450px;
+    margin: 24px;
+    margin-bottom: 72px;
+    font-family: Mukta;
+    display: flex;
+    flex-direction: column;
+}
+
+.audio-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 24px;
+}
+
+.media-image {
+    height: 250px;
+    border-radius: 25px 25px 0px 0px;
+    width: auto;
+}
+
+.media-info {
+    margin: 10px 20px 0px 20px;
+}
+
+.artist {
+    color: #D3D3D3;
+    font-size: 12px
+}
+
+#audioControl {
+    background-color: #007bff; /* Primary color */
+    border: none;
+    border-radius: 50%; /* Rounded button */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.audio-control,
+.playIcon,
+.pauseIcon {
+    color: white;
+    font-size: 20px; 
+    width: 24px; 
+    height: 24px;
+    margin-top: 2px;
+}
+
+.audio-control {
+    background-color: #007bff; 
+    border: none; 
+    border-radius: 50%; 
+    padding: 10px; 
+    width: 50px; 
+    height: 50px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.audio-control:hover {
+    transform: scale(1.1); 
+}
+
+.audio-control:active {
+    transform: scale(1.05); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.audio-control:focus {
+    outline: none;
+    border: none;
+}
+
+.progress-bar {
+    width: 90%;
+    height: 5px; 
+    appearance: none;
+    background: linear-gradient(to right, #007bff var(--progress, 0%), #ddd var(--progress, 0%));
+    border-radius: 5px;
+    outline: none; 
+    margin: 10px;
+    cursor: pointer;
+  
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #007bff;
+      cursor: pointer;
+    }
+  
+    &::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #007bff;
+      cursor: pointer;
+    }
+  }
+
+  .media-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Disable vertical scrolling */
+    position: fixed; /* Make it independent of its parent */
+    top: 0; /* Adjust the top position as needed */
+    left: 0;
+    right: 0;
+    width: 100vw; /* Ensure it spans the entire viewport width */
+    height: auto;
+    margin: 0;
+    margin-top: 10%;
+    padding: 0;
+    box-sizing: border-box;
+  
+    /* Hide scrollbars */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  
+    &::-webkit-scrollbar {
+      display: none; /* For Chrome, Safari, and Opera */
+    }
+  }
+  
+  

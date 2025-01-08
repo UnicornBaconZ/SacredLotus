@@ -21,23 +21,69 @@ export class SongsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.songsService.getSongs().subscribe((data) => {
       this.songs = data;
-      this.songs.concat(data)
-      this.songs.concat(data)
+      this.songs = [...this.songs,...this.songs,...this.songs]
     });
   }
 
   ngAfterViewInit(): void {
     const element = this.mediaList.nativeElement;
+    let isScrolling = false;
+    element.addEventListener('scroll', () => {
+      const scrollLeft = element.scrollLeft;
+      const maxScrollLeft = element.scrollWidth - element.clientWidth;
+  
+      if (scrollLeft >= maxScrollLeft - 1) {
+        element.scrollLeft = element.scrollLeft - element.scrollWidth / 3;
+      }
+  
+      if (scrollLeft <= 0) {
+        element.scrollLeft = element.scrollLeft + element.scrollWidth / 3;
+      }
+    });
 
     element.addEventListener('wheel', (event: WheelEvent) => {
+      if (isScrolling) return;
+  
       event.preventDefault();
+      isScrolling = true;
+  
       element.scrollBy({
-        left: event.deltaY < 0 ? -100 : 100,
-        behavior: 'instant',
+        left: event.deltaY < 0 ? -500 : 500,
+        behavior: 'smooth',
       });
+  
+      setTimeout(() => {
+        isScrolling = false;
+      }, 300);
+    });
+  
+    setTimeout(() => {
+      element.scrollLeft = element.scrollWidth / 3;
+      this.spinAnimation(element, element.scrollWidth / 3, element.scrollWidth / 3 + 5000, 750);
     });
   }
-
+  
+  private spinAnimation(element: HTMLElement, start: number, end: number, duration: number) {
+    const distance = end - start;
+    const startTime = performance.now();
+  
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1); 
+      const scrollPosition = start + distance * progress;
+  
+      element.scrollLeft = scrollPosition;
+  
+      if (progress < 1) {
+        requestAnimationFrame(animate); 
+      } else {
+        element.scrollLeft = element.scrollWidth / 3;
+      }
+    };
+  
+    requestAnimationFrame(animate);
+  }
+  
   toggleAudio(audio: HTMLAudioElement, event: Event): void {
     const button = event.target as HTMLElement;
     const icon = button.querySelector('i') as HTMLElement;

@@ -18,7 +18,6 @@ export class SeriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.mediaService.getSerieItems().subscribe((data) => {
-      console.log(data)
       this.mediaItems = data;
     })
   }

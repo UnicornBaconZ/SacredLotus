@@ -1,12 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SeriesComponent } from './series/series.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet,
-    SeriesComponent
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

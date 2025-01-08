@@ -4,9 +4,9 @@
       <img [src]="song.songImage" [alt]="song.title" class="media-image" />
       <div class="media-info">
         <div class="title">
-          <h5>{{ song.title }}</h5>
+          <h3>{{ song.title }}</h3>
           <a [href]="song.songFile" [download]="song.title" class="download-button" title="Download">
-            <mat-icon>download</mat-icon>
+            <mat-icon class="icon">download</mat-icon>
           </a>
         </div>
         <p class="artist">{{ song.artist }}</p>

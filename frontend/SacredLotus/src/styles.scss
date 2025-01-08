@@ -5,6 +5,12 @@
   --background-color: #a1d8d1; // (161, 216, 209)
 }
 
+@font-face {
+  font-family: 'Manrope ExtraLight';
+  src: url('/fonts/manrope.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
 
 
 * {
@@ -15,13 +21,8 @@
 html, body {
   height: 100%;
   margin: 0;
-  // background-image: url("/background.png");
-  // background-repeat: no-repeat;
-  // background-size: cover;
-  // background-attachment: fixed;
-  // background-position: center;
   background-color: var(--background-color);
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Manrope ExtraLight', sans-serif !important;
   font-size: 16px;
   line-height: 1.5;
   overflow: hidden;
@@ -46,13 +47,10 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   a {
-    color: #007bff;
+    color: var(--primary-color);
     text-decoration: none;
   
     &:hover {
       text-decoration: underline;
     }
   }
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
